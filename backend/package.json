@@ -1,0 +1,30 @@
+{
+    "dependencies": {
+        "dotenv": "^17.1.0",
+        "express": "^5.1.0",
+        "module-alias": "^2.2.3",
+        "mqtt": "^5.13.2",
+        "mysql2": "^3.14.1",
+        "nodemon": "^3.1.10",
+        "socket.io": "^4.8.1",
+        "socket.io-client": "^4.8.1"
+    },
+    "name": "envirox",
+    "version": "1.0.0",
+    "main": "index.js",
+    "_moduleAliases": {
+        "@db": "database",
+        "@mqtt": "mqtt",
+        "@config": "config",
+        "@socket": "socket",
+        "@routes": "routes"
+    },
+    "scripts": {
+        "dev": "nodemon index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": ""
+}
