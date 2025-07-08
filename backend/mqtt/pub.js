@@ -15,7 +15,7 @@ for (let i = 0; i < TOTAL_DEVICES; i++) {
     });
 
     client.on("connect", () => {
-        console.log(`${clientId} CONNECTED`);
+        console.log(`${clientId} connected`);
         setTimeout(() => {
             setInterval(() => {
                 const payload = JSON.stringify({
@@ -31,7 +31,7 @@ for (let i = 0; i < TOTAL_DEVICES; i++) {
     });
 
     client.on("error", (err) => {
-        console.error(`${clientId} ERROR:`, err.message);
+        console.error(`${clientId} Error:`, err.message);
     });
 
     clients.push(client);

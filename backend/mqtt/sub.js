@@ -12,7 +12,7 @@ const client = mqtt.connect(brokerUrl, {
 });
 
 client.on("connect", () => {
-    console.log("Subscriber CONNECTED");
+    console.log("Subscriber connected");
 
     client.subscribe(topic, { qos }, (err) => {
         if (err) {
