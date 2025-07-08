@@ -12,10 +12,6 @@ pids
 *.seed
 *.pid.lock
 
-# dotenv environment variable files
-.env
-.env.*
-
 # OS generated files
 .DS_Store
 Thumbs.db
