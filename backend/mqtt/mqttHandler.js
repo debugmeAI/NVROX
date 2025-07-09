@@ -4,6 +4,9 @@ const mqtt = require("mqtt");
 const knex = require("@db/knex");
 const { brokerUrl, options, topic, qos } = require("@mqtt/mqttConfig");
 
+const { getDeviceId } = require("@redis/deviceCache");
+const { getThresholds } = require("@redis/thresholdCache");
+
 const client = mqtt.connect(brokerUrl, {
     ...options,
     clientId: `backend_logger_${Date.now()}_${Math.floor(
@@ -30,19 +33,14 @@ client.on("message", async (receivedTopic, message) => {
         const data = JSON.parse(message.toString());
         const { mac_address, temp, humid, timestamp } = data;
 
-        const device = await knex("devices")
-            .select("id")
-            .where({ mac_address, status: "Active" })
-            .first();
+        const deviceId = await getDeviceId(mac_address);
 
-        if (!device) {
+        if (!deviceId) {
             console.warn(
                 `[IGNORED] ${mac_address} Not registered or not active`
             );
             return;
         }
-
-        const deviceId = device.id;
 
         await knex("sensor_readings").insert({
             device_id: deviceId,
@@ -53,10 +51,8 @@ client.on("message", async (receivedTopic, message) => {
 
         console.log(`[SAVED] ${mac_address} | ${temp}°C | ${humid}%`);
 
-        const thresholds = await knex("sensor_thresholds").where({
-            device_id: deviceId,
-        });
-
+        // === Get threshold limits ===
+        const thresholds = await getThresholds(deviceId);
         const alerts = [];
 
         thresholds.forEach((t) => {
@@ -88,8 +84,7 @@ client.on("message", async (receivedTopic, message) => {
         if (alerts.length > 0) {
             await knex("alerts").insert(alerts);
             console.warn(
-                `[ALERT] triggered for ${mac_address}:`,
-                alerts.length
+                `[ALERT] triggered for ${mac_address}: ${alerts.length} alert(s)`
             );
         }
     } catch (err) {
