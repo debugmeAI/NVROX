@@ -2,6 +2,7 @@
     "dependencies": {
         "dotenv": "^17.1.0",
         "express": "^5.1.0",
+        "knex": "^3.1.0",
         "module-alias": "^2.2.3",
         "mqtt": "^5.13.2",
         "mysql2": "^3.14.1",
@@ -11,7 +12,7 @@
     },
     "name": "envirox",
     "version": "1.0.0",
-    "main": "index.js",
+    "main": "server.js",
     "_moduleAliases": {
         "@db": "database",
         "@mqtt": "mqtt",
@@ -20,7 +21,7 @@
         "@routes": "routes"
     },
     "scripts": {
-        "dev": "nodemon index.js",
+        "dev": "nodemon server.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],

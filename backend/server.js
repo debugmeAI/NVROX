@@ -9,12 +9,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-require("@db/config");
+require("@db/knex");
+require("@mqtt/mqttHandler");
 
-// require("@mqtt/pub");
-require("@mqtt/sub");
-
-const apiRoutes = require("@routes/api");
+const apiRoutes = require("@routes");
+app.use(express.json());
 app.use("/api", apiRoutes);
 
 const { setupSocket } = require("@socket/socketHandler");
@@ -24,5 +23,5 @@ setupSocket(server);
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-    console.log(`🚀 Backend running at http://localhost:${PORT}`);
+    console.log(`[RUN] Backend running at http://localhost:${PORT}`);
 });
