@@ -12,7 +12,7 @@
     },
     "name": "envirox",
     "version": "1.0.0",
-    "main": "server.js",
+    "main": "index.js",
     "_moduleAliases": {
         "@db": "database",
         "@mqtt": "mqtt",
@@ -21,7 +21,7 @@
         "@routes": "routes"
     },
     "scripts": {
-        "dev": "nodemon server.js",
+        "dev": "nodemon index.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
