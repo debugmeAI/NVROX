@@ -10,16 +10,10 @@
 ## ⚙️ Prerequisites
 
 - **Node.js (v18+)**
-
 - **EMQX Broker (MQTT)**  
-  > Make sure EMQX is installed and running as a background service.
-
 - **Redis**  
-  > Make sure Redis is installed and running as a background service.
-
-- **MariaDB** atau **MySQL**  
-  > Ensure the database server is installed and accessible.
-
+- **MariaDB** or **MySQL**  
+  
 ---
 
 ## 📦 Tech Stack
