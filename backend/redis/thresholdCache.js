@@ -1,8 +1,8 @@
 const redis = require("./index");
 const knex = require("@db/knex");
 
-const getThresholds = async (deviceId) => {
-    const key = `thresholds:${deviceId}`;
+const getThresholds = async (macAddress) => {
+    const key = `thresholds:${macAddress}`;
     let cached = await redis.get(key);
 
     if (cached) {
@@ -10,18 +10,18 @@ const getThresholds = async (deviceId) => {
     }
 
     const thresholds = await knex("sensor_thresholds").where({
-        device_id: deviceId,
+        mac_address: macAddress,
     });
 
     if (thresholds.length > 0) {
-        await redis.set(key, JSON.stringify(thresholds), "EX", 3600);
+        await redis.set(key, JSON.stringify(thresholds), "EX", 3600); // 1 jam
     }
 
     return thresholds;
 };
 
-const clearThresholdCache = async (deviceId) => {
-    const key = `thresholds:${deviceId}`;
+const clearThresholdCache = async (macAddress) => {
+    const key = `thresholds:${macAddress}`;
     await redis.del(key);
 };
 

@@ -4,14 +4,11 @@ const mqtt = require("mqtt");
 const knex = require("@db/knex");
 const { brokerUrl, options, topic, qos } = require("@mqtt/mqttConfig");
 
-const { getDeviceId } = require("@redis/deviceCache");
 const { getThresholds } = require("@redis/thresholdCache");
 
 const client = mqtt.connect(brokerUrl, {
     ...options,
-    clientId: `backend_logger_${Date.now()}_${Math.floor(
-        Math.random() * 1000
-    )}`,
+    clientId: `backend_logger_${Date.now()}_${Math.floor(Math.random() * 1000)}`,
 });
 
 client.on("connect", () => {
@@ -33,17 +30,16 @@ client.on("message", async (receivedTopic, message) => {
         const data = JSON.parse(message.toString());
         const { mac_address, temp, humid, timestamp } = data;
 
-        const deviceId = await getDeviceId(mac_address);
+        const device = await knex("devices")
+            .where({ mac_address, status: "Active" })
+            .first();
 
-        if (!deviceId) {
-            console.warn(
-                `[IGNORED] ${mac_address} Not registered or not active`
-            );
+        if (!device) {
+            console.warn(`[IGNORED] ${mac_address} not registered or inactive`);
             return;
         }
-
         await knex("sensor_readings").insert({
-            device_id: deviceId,
+            mac_address, // FK
             temperature: temp,
             humidity: humid,
             recorded_at: knex.fn.now(),
@@ -51,8 +47,7 @@ client.on("message", async (receivedTopic, message) => {
 
         console.log(`[SAVED] ${mac_address} | ${temp}°C | ${humid}%`);
 
-        // === Get threshold limits ===
-        const thresholds = await getThresholds(deviceId);
+        const thresholds = await getThresholds(mac_address);
         const alerts = [];
 
         thresholds.forEach((t) => {
@@ -60,7 +55,7 @@ client.on("message", async (receivedTopic, message) => {
 
             if (value < t.lower_limit) {
                 alerts.push({
-                    device_id: deviceId,
+                    mac_address,
                     parameter: t.parameter,
                     value: value,
                     threshold: t.lower_limit,
@@ -70,8 +65,8 @@ client.on("message", async (receivedTopic, message) => {
             }
 
             if (value > t.upper_limit) {
-                alerts.push({
-                    device_id: deviceId,
+                    alerts.push({
+                    mac_address,
                     parameter: t.parameter,
                     value: value,
                     threshold: t.upper_limit,
@@ -84,7 +79,7 @@ client.on("message", async (receivedTopic, message) => {
         if (alerts.length > 0) {
             await knex("alerts").insert(alerts);
             console.warn(
-                `[ALERT] triggered for ${mac_address}: ${alerts.length} alert(s)`
+                `[ALERT] Triggered for ${mac_address}: ${alerts.length} alert(s)`
             );
         }
     } catch (err) {

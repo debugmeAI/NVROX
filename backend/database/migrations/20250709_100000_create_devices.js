@@ -4,8 +4,8 @@
  */
 exports.up = function (knex) {
     return knex.schema.createTable("devices", function (table) {
-        table.integer("device_id").primary().unsigned();
-        table.string("mac_address").unique().notNullable();
+        table.string("device_name").notNullable();
+        table.string("mac_address").primary();
         table.string("location");
         table.enu("status", ["Active", "Inactive"]).notNullable();
         table.timestamp("created_at").defaultTo(knex.fn.now());

@@ -10,13 +10,13 @@ const getDeviceId = async (mac_address) => {
     }
 
     const device = await knex("devices")
-        .select("device_id")
+        .select("mac_address")
         .where({ mac_address, status: "Active" })
         .first();
 
     if (!device) return null;
 
-    id = device.device_id;
+    id = device.mac_address;
 
     await redis.set(key, id, "EX", 3600);
 
