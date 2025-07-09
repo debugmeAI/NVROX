@@ -7,6 +7,21 @@
 
 ---
 
+## ⚙️ Prerequisites
+
+- **Node.js (v18+)**
+
+- **EMQX Broker (MQTT)**  
+  > Make sure EMQX is installed and running as a background service.
+
+- **Redis**  
+  > Make sure Redis is installed and running as a background service.
+
+- **MariaDB** atau **MySQL**  
+  > Ensure the database server is installed and accessible.
+
+---
+
 ## 📦 Tech Stack
 
 ### 🔌 IoT & Communication
@@ -65,12 +80,10 @@ DB_USER=root
 DB_PASS=yourpassword
 DB_NAME=nvrox_db
 
-MQTT_BROKER=ws://localhost:8083/mqtt
-MQTT_TOPIC=sensor/+
+MQTT_BROKER=mqtt://localhost:1883
+MQTT_TOPIC=nvrox/temp-hum
 MQTT_QOS=1
 ```
-
-> Make sure EMQX is installed and running as a background service
 
 ---
 
