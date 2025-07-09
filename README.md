@@ -1,4 +1,3 @@
-
 # 🌡️ NVROX - Environmental X
 
 **NVROX** is a real-time environmental monitoring system for temperature and humidity, designed for industrial use. It uses **ESP32** microcontrollers with sensors, communicates via **MQTT (EMQX broker)**, and features a powerful backend with **Node.js** and a modern frontend using **React (Vite + TypeScript)**.
@@ -11,19 +10,23 @@
 ## 📦 Tech Stack
 
 ### 🔌 IoT & Communication
-- **ESP32** microcontrollers
-- **MQTT protocol** via **EMQX** broker
+
+-   **ESP32** microcontrollers
+-   **MQTT protocol** via **EMQX** broker
 
 ### 🛠️ Backend
-- **Node.js** + **Express.js**
-- **Knex.js** (SQL query builder)
-- **MariaDB** (relational database)
-- **Socket.IO** (WebSocket for real-time data)
+
+-   **Node.js** + **Express.js**
+-   **Knex.js** (SQL query builder)
+-   **MariaDB** (relational database)
+-   **Socket.IO** (WebSocket for real-time data)
+-   **Redis** (caching & fast data access)
 
 ### 💻 Frontend
-- **React** (Vite + TypeScript)
-- **TailwindCSS** + **ShadCN UI**
-- **Socket.IO Client** for real-time updates
+
+-   **React** (Vite + TypeScript)
+-   **TailwindCSS** + **ShadCN UI**
+-   **Socket.IO Client** for real-time updates
 
 ---
 
@@ -104,13 +107,13 @@ Open your browser and go to `http://localhost:5173` to access the monitoring das
 
 ## ✨ Features
 
-- 📶 Real-time temperature & humidity monitoring
-- 🔧 MQTT-based device communication (EMQX)
-- 📊 Web-based dashboard with live updates
-- 🧠 Configurable thresholds & alert logic
-- 🗃️ Historical data storage (MariaDB)
-- 🔌 Fast WebSocket communication with Socket.IO
-- 📱 Ready for industrial & scalable deployment
+-   📶 Real-time temperature & humidity monitoring
+-   🔧 MQTT-based device communication (EMQX)
+-   📊 Web-based dashboard with live updates
+-   🧠 Configurable thresholds & alert logic
+-   🗃️ Historical data storage (MariaDB)
+-   🔌 Fast WebSocket communication with Socket.IO
+-   📱 Ready for industrial & scalable deployment
 
 ---
 
