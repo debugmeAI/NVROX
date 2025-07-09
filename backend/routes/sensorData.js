@@ -4,7 +4,7 @@ const express = require("express");
 const router = express.Router();
 const knex = require("@db/knex");
 
-router.get("/sensor-data", async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const rows = await knex("sensor_readings")
             .select("*")

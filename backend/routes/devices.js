@@ -4,7 +4,7 @@ const express = require("express");
 const router = express.Router();
 const knex = require("@db/knex");
 
-router.get("/devices", async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const rows = await knex("devices").select("*");
         res.json(rows);
@@ -14,7 +14,7 @@ router.get("/devices", async (req, res) => {
     }
 });
 
-router.post("/devices", async (req, res) => {
+router.post("/", async (req, res) => {
     const { mac_address, location, status } = req.body;
 
     if (!mac_address) {
