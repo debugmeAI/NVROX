@@ -3,31 +3,29 @@
  * @returns { Promise<void> }
  */
 exports.seed = async function (knex) {
-    // Hapus semua data lama
     await knex("devices").del();
 
-    // Insert data baru
     await knex("devices").insert([
         {
+            device_id: 1,
             mac_address: "AA:BB:CC:DD:EE:01",
-            location: "Line A",
+            location: "Building 1",
             status: "Active",
-            created_at: new Date(),
-            updated_at: new Date(),
+            created_at: new Date()
         },
         {
+            device_id: 2,
             mac_address: "AA:BB:CC:DD:EE:02",
-            location: "Line B",
+            location: "Building 2",
             status: "Active",
-            created_at: new Date(),
-            updated_at: new Date(),
+            created_at: new Date()
         },
         {
+            device_id: 3,
             mac_address: "AA:BB:CC:DD:EE:03",
-            location: "Line C",
+            location: "Building 3",
             status: "Inactive",
-            created_at: new Date(),
-            updated_at: new Date(),
+            created_at: new Date()
         },
     ]);
 };

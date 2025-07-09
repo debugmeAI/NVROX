@@ -44,7 +44,7 @@ const runAllChecks = async () => {
     const isConnected = await checkRedisConnection();
     if (!isConnected) return;
 
-    await checkDeviceCache("AA:BB:CC:DD:EE:36");
+    await checkDeviceCache("AA:BB:CC:DD:EE:01");
     await checkThresholdCache(1);
 };
 
