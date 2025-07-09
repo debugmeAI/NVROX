@@ -158,4 +158,4 @@ Feel free to open issues, fork the repo, and submit pull requests.
 
 ## 📬 Contact
 
-For questions or business inquiries, reach out via [email@example.com] or submit an issue in the repository.
+For questions or support, please open an issue or contact [debugmeAI](https://github.com/debugmeAI)
