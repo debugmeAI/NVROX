@@ -71,7 +71,18 @@ MQTT_QOS=1
 
 ---
 
-### 4. Run the Application
+### 4. Setup the Database
+
+Run the following commands to apply migrations and seed initial data:
+
+```bash
+npx knex migrate:latest --knexfile ./database/knexConfig.js
+npx knex seed:run --knexfile ./database/knexConfig.js
+```
+
+---
+
+### 5. Run the Application
 
 #### Start Backend
 
