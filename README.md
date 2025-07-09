@@ -70,7 +70,7 @@ MQTT_TOPIC=sensor/+
 MQTT_QOS=1
 ```
 
-> Make sure your EMQX broker is running and accessible via WebSocket.
+> Make sure EMQX is installed and running as a background service
 
 ---
 
