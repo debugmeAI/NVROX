@@ -9,11 +9,11 @@
 
 ## ⚙️ Prerequisites
 
-- **Node.js (v18+)**
-- **EMQX Broker (MQTT)**  
-- **Redis**  
-- **MariaDB** or **MySQL**  
-  
+-   **Node.js (v18+)**
+-   **EMQX Broker (MQTT)**
+-   **Redis**
+-   **MariaDB** or **MySQL**
+
 ---
 
 ## 📦 Tech Stack
@@ -69,6 +69,9 @@ npm install
 Edit the environment configuration file `.env` under the `backend/` path:
 
 ```env
+# --- Server ---
+PORT=3000                        # App/server port
+
 # --- Database ---
 DB_CLIENT=mysql2                 # DB driver: mysql2, pg, sqlite3, etc.
 DB_HOST=localhost                # DB server address
