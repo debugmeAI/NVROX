@@ -150,9 +150,9 @@ nvrox/
 
 ---
 
-## 📷 Screenshots (optional)
+## 📷 Screenshots
 
-> Add UI screenshots here if available, for better visual reference.
+> ASAP
 
 ---
 
