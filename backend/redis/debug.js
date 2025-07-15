@@ -24,9 +24,8 @@ const checkDeviceCache = async (mac_address) => {
     }
 };
 
-// Cek cache untuk threshold
-const checkThresholdCache = async (deviceId) => {
-    const key = `thresholds:${deviceId}`;
+const checkThresholdCache = async (mac_address) => {
+    const key = `thresholds:${mac_address}`;
     const exists = await redis.exists(key);
     const value = await redis.get(key);
     console.log(`\n🔎 [Threshold Cache] Key: ${key}`);
@@ -45,7 +44,7 @@ const runAllChecks = async () => {
     if (!isConnected) return;
 
     await checkDeviceCache("AA:BB:CC:DD:EE:01");
-    await checkThresholdCache(1);
+    await checkThresholdCache("AA:BB:CC:DD:EE:01");
 };
 
 runAllChecks();

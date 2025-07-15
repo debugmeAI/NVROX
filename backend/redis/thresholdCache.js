@@ -14,7 +14,7 @@ const getThresholds = async (macAddress) => {
     });
 
     if (thresholds.length > 0) {
-        await redis.set(key, JSON.stringify(thresholds), "EX", 3600); // 1 jam
+        await redis.set(key, JSON.stringify(thresholds));
     }
 
     return thresholds;

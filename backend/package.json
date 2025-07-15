@@ -6,10 +6,13 @@
         "knex": "^3.1.0",
         "module-alias": "^2.2.3",
         "mqtt": "^5.13.2",
-        "mysql2": "^3.14.1",
+        "mssql": "^11.0.1",
+        "mysql2": "^3.14.2",
         "nodemon": "^3.1.10",
+        "pg": "^8.16.3",
         "socket.io": "^4.8.1",
-        "socket.io-client": "^4.8.1"
+        "socket.io-client": "^4.8.1",
+        "sqlite3": "^5.1.7"
     },
     "name": "envirox",
     "version": "1.0.0",

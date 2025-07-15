@@ -3,24 +3,21 @@ const knex = require("@db/knex");
 
 const getDeviceId = async (mac_address) => {
     const key = `device:${mac_address}`;
-    let id = await redis.get(key);
+    const cached = await redis.get(key);
 
-    if (id) {
-        return Number(id);
+    if (cached) {
+        return (cached);
     }
 
     const device = await knex("devices")
-        .select("mac_address")
         .where({ mac_address, status: "Active" })
         .first();
 
     if (!device) return null;
 
-    id = device.mac_address;
+    await redis.set(key, device.mac_address);
 
-    await redis.set(key, id, "EX", 3600);
-
-    return id;
+    return device.mac_address;
 };
 
 const clearDeviceCache = async (mac_address) => {
