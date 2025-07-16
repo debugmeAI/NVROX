@@ -20,9 +20,10 @@ const getThresholds = async (macAddress) => {
     return thresholds;
 };
 
-const clearThresholdCache = async (macAddress) => {
-    const key = `thresholds:${macAddress}`;
-    await redis.del(key);
+const clearThresholdCache = async () => {
+    const thresholdKeys = await redis.keys("thresholds:*");
+
+    if (thresholdKeys.length > 0) await redis.del(...thresholdKeys);
 };
 
 module.exports = {

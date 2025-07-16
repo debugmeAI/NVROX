@@ -6,7 +6,7 @@ const getDeviceId = async (mac_address) => {
     const cached = await redis.get(key);
 
     if (cached) {
-        return (cached);
+        return cached;
     }
 
     const device = await knex("devices")
@@ -20,9 +20,10 @@ const getDeviceId = async (mac_address) => {
     return device.mac_address;
 };
 
-const clearDeviceCache = async (mac_address) => {
-    const key = `device:${mac_address}`;
-    await redis.del(key);
+const clearDeviceCache = async () => {
+    const deviceKeys = await redis.keys("device:*");
+
+    if (deviceKeys.length > 0) await redis.del(...deviceKeys);
 };
 
 module.exports = {

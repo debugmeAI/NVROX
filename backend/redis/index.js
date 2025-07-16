@@ -10,13 +10,13 @@ redis
     .ping()
     .then((res) => {
         if (res === "PONG") {
-            console.log("[REDIS] Connected");
+            console.log("[CONNECTED] Redis Connected");
         } else {
-            console.warn("[REDIS] Unexpected response:", res);
+            console.warn("[ERROR] Unexpected response:", res);
         }
     })
     .catch((err) => {
-        console.error("[REDIS] Connection failed", err.message);
+        console.error("[ERROR] Connection failed", err.message);
     });
 
 module.exports = redis;
