@@ -5,6 +5,9 @@ node_modules/
 dist/
 build/
 
+#env
+*.env
+
 # Runtime data
 *.log
 pids
