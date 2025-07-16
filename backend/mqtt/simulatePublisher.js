@@ -3,7 +3,7 @@ require("module-alias/register");
 const mqtt = require("mqtt");
 const { brokerUrl, options, topic, qos } = require("@mqtt/mqttConfig");
 
-const TOTAL_DEVICES = 100;
+const TOTAL_DEVICES = 30;
 const clients = [];
 
 function generateMacAddress(index) {
@@ -13,7 +13,7 @@ function generateMacAddress(index) {
 
 for (let i = 0; i < TOTAL_DEVICES; i++) {
     const macAddress = generateMacAddress(i);
-    const clientId = `device_sim_${i + 1}`;
+    const clientId = `[SIMULATE] Device ${i + 1}`;
 
     const client = mqtt.connect(brokerUrl, {
         ...options,
