@@ -8,7 +8,7 @@ DB_USER=yourusername             # DB username
 DB_PASSWORD=yourpassword         # DB password
 DB_NAME=nvrox_db                 # DB name
 DB_PORT=3306                     # DB port (MySQL default: 3306)
-NODE_ENV=development             #NODE = development/production
+NODE_ENV=development             # NODE = development/production
 
 # --- MQTT Broker ---
 MQTT_BROKER=mqtt://localhost:1883  # Broker URL (e.g. EMQX, Mosquitto)
