@@ -51,8 +51,8 @@ const navData = [
 ];
 
 const userData = {
-    name: "gilang fauzi",
-    email: "nonono@example.com",
+    name: "Gilang Fauzi",
+    email: "gilangfauzi@example.com",
     avatar: "",
 };
 
@@ -81,10 +81,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         <SidebarMenuButton
                             asChild
                             className="data-[slot=sidebar-menu-button]:!p-1.5">
-                            <Link to={"/"}>
+                            <Link to={"/overview"}>
                                 <IconBackground className="!size-5" />
                                 <span className="text-base font-bold">
                                     NVROX
+                                </span>
+                                <span className="text-sm text-muted-foreground">
+                                    /ˈɛn.vaɪ.rɒks/
                                 </span>
                             </Link>
                         </SidebarMenuButton>
