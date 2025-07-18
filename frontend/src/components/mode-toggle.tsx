@@ -1,12 +1,26 @@
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun, Laptop } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/use-theme";
+
+const themes = ["light", "dark", "system"] as const;
 
 export function ModeToggle() {
     const { theme, setTheme } = useTheme();
 
+    const getNextTheme = (current: string) => {
+        const index = themes.indexOf(current as (typeof themes)[number]);
+        return themes[(index + 1) % themes.length];
+    };
+
     const toggleTheme = () => {
-        setTheme(theme === "dark" ? "light" : "dark");
+        const nextTheme = getNextTheme(theme);
+        setTheme(nextTheme);
+    };
+
+    const renderIcon = () => {
+        if (theme === "light") return <Sun className="h-4 w-4" />;
+        if (theme === "dark") return <Moon className="h-4 w-4" />;
+        return <Laptop className="h-4 w-4" />;
     };
 
     return (
@@ -16,11 +30,7 @@ export function ModeToggle() {
             className="h-8 w-8 ml-auto"
             onClick={toggleTheme}
             aria-label="Toggle Theme">
-            {theme === "dark" ? (
-                <Sun className="h-4 w-4" />
-            ) : (
-                <Moon className="h-4 w-4" />
-            )}
+            {renderIcon()}
         </Button>
     );
 }
