@@ -86,7 +86,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                                 <span className="text-base font-bold">
                                     NVROX
                                 </span>
-                                <span className="text-sm text-muted-foreground">
+                                <span className="text-xs text-muted-foreground">
                                     /ˈɛn.vaɪ.rɒks/
                                 </span>
                             </Link>

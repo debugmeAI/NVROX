@@ -29,7 +29,7 @@ export default function LiveMonitoring() {
                         <Breadcrumb>
                             <BreadcrumbList>
                                 <BreadcrumbItem className="hidden md:block">
-                                    <BreadcrumbItem>Environment</BreadcrumbItem>
+                                    Environment
                                 </BreadcrumbItem>
                                 <BreadcrumbSeparator className="hidden md:block" />
                                 <BreadcrumbItem>

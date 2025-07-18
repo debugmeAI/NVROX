@@ -29,9 +29,7 @@ export default function DeviceSetup() {
                         <Breadcrumb>
                             <BreadcrumbList>
                                 <BreadcrumbItem className="hidden md:block">
-                                    <BreadcrumbItem>
-                                        Configuration
-                                    </BreadcrumbItem>
+                                    Configuration
                                 </BreadcrumbItem>
                                 <BreadcrumbSeparator className="hidden md:block" />
                                 <BreadcrumbItem>

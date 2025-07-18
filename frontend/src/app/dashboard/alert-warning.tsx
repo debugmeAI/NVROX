@@ -29,7 +29,7 @@ export default function AlertWarning() {
                         <Breadcrumb>
                             <BreadcrumbList>
                                 <BreadcrumbItem className="hidden md:block">
-                                    <BreadcrumbItem>Dashboard</BreadcrumbItem>
+                                    Dashboard
                                 </BreadcrumbItem>
                                 <BreadcrumbSeparator className="hidden md:block" />
                                 <BreadcrumbItem>
